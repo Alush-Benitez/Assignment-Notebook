@@ -11,8 +11,7 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var objects = [Any]()
-
+    var assignments = [Assignment]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +38,34 @@ class MasterViewController: UITableViewController {
 
     @objc
     func insertNewObject(_ sender: Any) {
-        objects.insert(NSDate(), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
+        let alert = UIAlertController(title: "Add an Assignment", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Assignment Name"
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "Subject"
+        }
+        alert.addTextField { (textField) in
+            textField.keyboardType = .numbersAndPunctuation
+            textField.placeholder = "Due Date"
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "Discription"
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        let insertAction = UIAlertAction(title: "Add", style: .default) { (action) in
+            let nameTextField = alert.textFields![0] as UITextField
+            let subjectTextField = alert.textFields![1] as UITextField
+            let dueDateTextField = alert.textFields![2] as UITextField
+            let discriptionTextField = alert.textFields![3] as UITextField
+            let assignment = Assignment(name: nameTextField.text!, subject: subjectTextField.text!, dueDate: dueDateTextField.text!, discription: discriptionTextField.text!)
+            self.assignments.append(assignment)
+            self.tableView.reloadData()
+        }
+        alert.addAction(insertAction)
+        present(alert, animated: true, completion: nil)
     }
 
     // MARK: - Segues

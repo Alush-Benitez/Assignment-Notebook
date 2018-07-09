@@ -15,6 +15,11 @@ class Assignment: Codable {
     var dueDate: String
     var discription: String
     
-    
+    init(name: String, subject: String, dueDate: String, discription: String){
+        self.name = name
+        self.subject = subject
+        self.dueDate = dueDate
+        self.discription = discription
+    }
     
 }
