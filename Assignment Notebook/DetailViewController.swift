@@ -45,10 +45,12 @@ class DetailViewController: UIViewController {
     func configureView() {
         //Update the user interface for the detail item
         if let assignment = self.detailItem {
-            nameTextField.text = assignment.name
-            subjectTextField.text = assignment.subject
-            dueDateTextField.text = assignment.dueDate
-            discriptionTextView.text = assignment.discription
+            if nameTextField != nil {
+                nameTextField.text = assignment.name
+                subjectTextField.text = assignment.subject
+                dueDateTextField.text = assignment.dueDate
+                discriptionTextView.text = assignment.discription
+            }
         }
     }
 

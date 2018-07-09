@@ -12,6 +12,8 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var assignments = [Assignment]()
+    
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +26,19 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+        if let savedData = defaults.object(forKey: "data") as? Data {
+            if let decoded = try? JSONDecoder().decode([Assignment].self, from: savedData) {
+                assignments = decoded
+            }
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
         tableView.reloadData()
+        saveData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +73,7 @@ class MasterViewController: UITableViewController {
             let assignment = Assignment(name: nameTextField.text!, subject: subjectTextField.text!, dueDate: dueDateTextField.text!, discription: discriptionTextField.text!)
             self.assignments.append(assignment)
             self.tableView.reloadData()
+            self.saveData()
         }
         alert.addAction(insertAction)
         present(alert, animated: true, completion: nil)
@@ -110,16 +120,23 @@ class MasterViewController: UITableViewController {
         if editingStyle == .delete {
             assignments.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            saveData()
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let objectToMove = cities.remove(at: sourceIndexPath.row)
+        let objectToMove = assignments.remove(at: sourceIndexPath.row)
         assignments.insert(objectToMove, at: destinationIndexPath.row)
+        saveData()
     }
 
+    func saveData() {
+        if let encoded = try? JSONEncoder().encode(assignments) {
+            defaults.set(encoded, forKey: "data")
+        }
+    }
 
 }
 
