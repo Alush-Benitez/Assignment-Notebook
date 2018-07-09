@@ -10,9 +10,11 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
-
-
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var subjectTextField: UITextField!
+    @IBOutlet weak var dueDateTextField: UITextField!
+    @IBOutlet weak var discriptionTextView: UITextView!
+    
     func configureView() {
         // Update the user interface for the detail item.
         if let detail = detailItem {

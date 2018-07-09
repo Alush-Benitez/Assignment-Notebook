@@ -14,6 +14,7 @@
 		4A050B5720F3C1CE00145B35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A050B5620F3C1CE00145B35 /* Assets.xcassets */; };
 		4A050B5A20F3C1CE00145B35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A050B5820F3C1CE00145B35 /* LaunchScreen.storyboard */; };
 		4A050B6520F3C1CE00145B35 /* Assignment_NotebookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050B6420F3C1CE00145B35 /* Assignment_NotebookTests.swift */; };
+		4A050B7020F3C29100145B35 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050B6F20F3C29100145B35 /* Assignment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		4A050B6020F3C1CE00145B35 /* Assignment NotebookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Assignment NotebookTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A050B6420F3C1CE00145B35 /* Assignment_NotebookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment_NotebookTests.swift; sourceTree = "<group>"; };
 		4A050B6620F3C1CE00145B35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A050B6F20F3C29100145B35 /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				4A050B4D20F3C1CC00145B35 /* AppDelegate.swift */,
 				4A050B4F20F3C1CC00145B35 /* MasterViewController.swift */,
+				4A050B6F20F3C29100145B35 /* Assignment.swift */,
 				4A050B5120F3C1CC00145B35 /* DetailViewController.swift */,
 				4A050B5320F3C1CC00145B35 /* Main.storyboard */,
 				4A050B5620F3C1CE00145B35 /* Assets.xcassets */,
@@ -200,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A050B7020F3C29100145B35 /* Assignment.swift in Sources */,
 				4A050B5220F3C1CC00145B35 /* DetailViewController.swift in Sources */,
 				4A050B5020F3C1CC00145B35 /* MasterViewController.swift in Sources */,
 				4A050B4E20F3C1CC00145B35 /* AppDelegate.swift in Sources */,
